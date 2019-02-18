@@ -32,8 +32,8 @@
                 document.body.appendChild(createElemnt('p', null, null, null, 'Введите число'));
             } else {
                 const p = document.body.appendChild(createElemnt('p', null, null, null, null));
-                for (let i = 0; i < num; i++) {
-                    let spanText = i + 1 + ' sheep...';
+                for (let i = 1; i <= num; i++) {
+                    let spanText = i + ' sheep...';
                     p.appendChild(createElemnt('span', null, null, null, spanText));
                 }
             }
