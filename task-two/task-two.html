@@ -24,24 +24,30 @@
         document.body.appendChild(createElemnt('div', 'container', null, null, null));
 
         function generateColor() {
-            return '#' + Math.floor(Math.random()*16777215).toString(16);
+            return '#' + Math.floor(Math.random()*16777218).toString(16);
         }
 
-        function addRect () {
+        function addRects () {
             const container = document.querySelector('#container');
-            container.style.display = 'flex';
             const num = parseInt(document.querySelector("#num").value);
-            console.log(num);
 
-            for (let i = 0; i < num; i++) {
-                const rect = container.appendChild(createElemnt('div', `container${i}`, null, null, null));
-                rect.style.backgroundColor = generateColor();
-                rect.style.width = '50px';
-                rect.style.height = '20px';
-                rect.style.margin = '5px';
+            if (Number(num) !== num && num < 0 || num > 30) {
+                document.body.appendChild(createElemnt('p', null, null, null, 'Введите число от 0 до 30'));
+            } else {
+                for (let i = 0; i < num; i++) {
+                    const row = container.appendChild(createElemnt('div', `row${i}`, null, null, null));
+                    row.style.display = 'flex';
+                    for (let j = 0; j < num; j++) {
+                        const col = row.appendChild(createElemnt('div', `colr${i}`, null, null, null));
+                        col.style.backgroundColor = generateColor();
+                        col.style.width = '50px';
+                        col.style.height = '20px';
+                        col.style.margin = '5px';
+                    }
+                }
             }
         }
 
-        document.getElementById('show').addEventListener('click', addRect);
+        document.getElementById('show').addEventListener('click', addRects);
     </script>
 </body>
