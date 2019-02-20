@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function createElemnt (tag, id, type, innerText, innerHtml) {
+            const elem = document.createElement(tag);
+            elem.type = type;
+            elem.id = id;
+            elem.innerHTML = innerHtml;
+            if (type === 'button') {
+                elem.value = innerText;
+            }
+            return elem;
+        }
+
+        document.body.appendChild(createElemnt('input', 'string', 'text'));
+        document.body.appendChild(createElemnt('input', 'show', 'button', 'Отправить'));
+
+        function showShortestWord () {
+            const str = document.getElementById("string").value;
+            strArr = str.split(' ');
+            let shortestWordLength = strArr.reduce((shortest, current) => {
+                return shortest.length <= current.length ? shortest : current;
+            });
+
+            document.body.appendChild(createElemnt('p', null, null, null, shortestWordLength));
+        }
+
+        document.getElementById('show').addEventListener('click', showShortestWord);
+    </script>
+</body>
+</html>
