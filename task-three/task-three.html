@@ -25,8 +25,7 @@
 
         function showShortestWord () {
             const str = document.getElementById("string").value;
-            strArr = str.split(' ');
-            let shortestWordLength = strArr.reduce((shortest, current) => {
+            let shortestWordLength = str.split(' ').reduce((shortest, current) => {
                 return shortest.length <= current.length ? shortest : current;
             });
 
