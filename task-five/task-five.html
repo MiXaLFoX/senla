@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    'use strict';
+    function getLowerestIndex (arr, elm) {
+        arr.push(elm);
+        arr.sort(function (a, b) {
+            if (a > b) return 1;
+            if (a < b) return -1;
+        });
+
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] === elm) return i;
+        }
+    }
+    const lowestIndex = getLowerestIndex([1,2,3,4], 1.5);
+    console.log(lowestIndex);
+</script>
+</body>
+</html>
