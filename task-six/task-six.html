@@ -13,19 +13,13 @@
         }, "");
 
         let frame = '';
-        for (let i=0; i < longestWord.length + 2; i++) {
+        for (let i=0; i < longestWord.length + 4; i++) {
             frame += border;
         }
-        arr.unshift(frame);
-        arr.push(frame);
-
-        console.log(arr);
 
         let newArr = arr.map( function (item, i, arr) {
             if (item === longestWord) {
                 item = `${border} ${item} ${border}`;
-            } else if (item === arr[0] || item === arr[4]) {
-                item = `${border}${item}${border}`;
             } else {
                 for (let i = 0; item.length < longestWord.length; i++) {
                     item += ' ';
@@ -34,6 +28,8 @@
             }
             return item;
         });
+
+        newArr = [frame, ...newArr, frame];
 
         const frameStr = newArr.join('\n');
         console.log(frameStr);
