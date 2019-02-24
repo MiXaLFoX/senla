@@ -5,37 +5,41 @@
     <title>Title</title>
 </head>
 <body>
-<script>
-    'use strict';
-    function frame (arr, border) {
-        let longestWord = arr.reduce(function(longest, current) {
-            return current.length > longest.length ? current : longest;
-        }, "");
+    <script>
+        'use strict';
+        function frame (arr, border) {
+            if (arr.length !== 0) {
+                let longestWord = arr.reduce(function(longest, current) {
+                    return current.length > longest.length ? current : longest;
+                }, "");
 
-        let frame = '';
-        for (let i=0; i < longestWord.length + 4; i++) {
-            frame += border;
+                let frame = '';
+                for (let i=0; i < longestWord.length + 4; i++) {
+                    frame += border;
+                }
+
+                let newArr = arr.map( function (item) {
+                    if (item === longestWord) {
+                        item = `${border} ${item} ${border}`;
+                    } else {
+                        for (let i = 0; item.length < longestWord.length; i++) {
+                            item += ' ';
+                        }
+                        item = `${border} ${item} ${border}`;
+                    }
+                    return item;
+                });
+
+                newArr = [frame, ...newArr, frame];
+
+                const frameStr = newArr.join('\n');
+                console.log(frameStr);
+            } else {
+                console.log('array is empty');
+            }
         }
 
-        let newArr = arr.map( function (item, i, arr) {
-            if (item === longestWord) {
-                item = `${border} ${item} ${border}`;
-            } else {
-                for (let i = 0; item.length < longestWord.length; i++) {
-                    item += ' ';
-                }
-                item = `${border} ${item} ${border}`;
-            }
-            return item;
-        });
-
-        newArr = [frame, ...newArr, frame];
-
-        const frameStr = newArr.join('\n');
-        console.log(frameStr);
-    }
-
-    frame(['Create', 'a', 'frame'], '+');
-</script>
+        frame(['Create', 'a', 'frame'], '+');
+    </script>
 </body>
 </html>
