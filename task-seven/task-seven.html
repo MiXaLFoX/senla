@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../project-js/js-project-mixal8411/js/game.js"></script>
+</head>
+<body>
+    <script>
+        function createHolder(value) {
+            this._value = value;
+
+            return {
+               getValue: function() {
+                   return this._value;
+                },
+                setValue: function (value) {
+                    this._value = value;
+                }
+            };
+        }
+
+        const obj = createHolder(5);
+        obj.getValue();
+        obj.setValue(2);
+        obj.getValue();
+    </script>
+</body>
+</html>
